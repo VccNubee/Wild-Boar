@@ -15,8 +15,5 @@ export default {
 }
 ul{
   list-style: none;
-  li{
-    float: left;
-  }
 }
 </style>
