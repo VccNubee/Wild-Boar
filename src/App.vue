@@ -1,12 +1,5 @@
 <template>
   <div id="app">
-    <ul>
-      <router-link tag='li' to='/tuijian' activeClass='active'>推荐</router-link>
-      <router-link tag='li' to='/' activeClass='active'>推荐</router-link>
-      <router-link tag='li' to='/' activeClass='active'>推荐</router-link>
-      <router-link tag='li' to='/' activeClass='active'>推荐</router-link>
-      <router-link tag='li' to='/' activeClass='active'>推荐</router-link>
-    </ul>
     <router-view/>
   </div>
 </template>
