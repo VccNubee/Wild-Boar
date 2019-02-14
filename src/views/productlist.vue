@@ -2,26 +2,27 @@
   <div class="productlist">
     一级详情
     <ul>
-    	<li v-for="products in datalist" @click="hadnleClick(products)">
+    	<!-- <li v-for="products in datalist" @click="hadnleClick(products)">
     		<img :src="products.imageUrl">
     		<h3>{{products.productName}}</h3>
-    	</li>
-    	<!-- <li>
+    	</li> -->
+    	<li>
     		<img src="https://cdn14.mei.com/product/YEX-113-00094/b87316eec89efc31d8c2875c90d75642.jpg@300w_400h_2e_75q">
 
-    	</li> -->
+    	</li>
     </ul>
   </div>
 </template>
 
 <script>
+	import Vue from 'vue'
 	import axios from "axios"
 	export default {
-		data(){
-			return {
-				looplist:null
-			}
-		},
+		// data(){
+		// 	return {
+		// 		looplist:[]
+		// 	}
+		// },
 		created(){
 
 		},
@@ -33,14 +34,14 @@
 
 			}).then(res=>{
 				console.log(res.data.products);
-				this.looplist = res.data.products.imageUrl
+				this.looplist = res.data.imageUrl
 			})
+		},
+		methods:{
+			handleClick(index){
+				this.$router.push(`/productlist/${index}`)
+			}
 		}
-		// methods:{
-		// 	handleClick(index){
-		// 		this.$router.push(`/productlist/${index}`)
-		// 	}
-		// }
 	}
 </script>
 

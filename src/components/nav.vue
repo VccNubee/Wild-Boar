@@ -13,17 +13,6 @@
     </ul>
   </div>
 </template>
-<<<<<<< HEAD
-
-<script>
-	
-</script>
-
-
-<style>
-	
-</style>
-=======
 <script>
 import axios from 'axios'
 export default {
@@ -84,4 +73,4 @@ ul{
 }
 }
 </style>
->>>>>>> 61ce669f6c3ac17a425d5739ea4948e4497bc946
+
