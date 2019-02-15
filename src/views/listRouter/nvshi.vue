@@ -74,7 +74,7 @@ export default {
 
 <style scoped lang="scss">
 .banner{
-    width:320px;
+    width:100%;
     height:380px;
     .ccc{
         width: 100%;
