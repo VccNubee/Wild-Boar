@@ -1,19 +1,27 @@
 <template>
   <div class="haiwai">
-    <Nav></Nav>
-      <img src="http://www.mei.com/static/img/mktbanner-default.cbf29f0.jpg" alt="">
-      <a :href="link"><img :src="imgUrl" alt=""></a>
-      
-      <div class='newToday' v-for='list in dataList'>
-        <p class='Top'>{{list.name}}</p>
-        <div v-for='data in list.events' class='product' :style='{background: "url("+ data.imageUrl +") 0% 0% / 100% 100%"}'>
+   <div class='nav'>
+    <ul>
+      <router-link tag='li' to='/tuijian' activeClass='active'>推荐</router-link>
+      <router-link tag='li' to='/zhonglei/haiwai' activeClass='active'>海外</router-link>
+      <router-link tag='li' to='/zhonglei/nvshi' activeClass='active'>女士</router-link>
+      <router-link tag='li' to='/zhonglei/nanshi' activeClass='active'>男士</router-link>
+      <router-link tag='li' to='/zhonglei/meizhuang' activeClass='active'>美妆</router-link>
+      <router-link tag='li' to='/zhonglei/jiaju' activeClass='active'>家具</router-link>
+      <router-link tag='li' to='/zhonglei/yingtong' activeClass='active'>婴童</router-link>
+      <!-- <router-link v-for='list in dataListTag' tag='li' to='/zhonglei' activeClass='active'>{{list.name}}</router-link> -->
+      <router-link tag='li' to='/jijiangtuichu' activeClass='active'>即将上架</router-link>
+    </ul>
+  </div>
+        <p class='Top'>{{product.lists[0].launchTime}}</p>
+        <p class = 'Top2'>{{product.tips}}</p>
+        <div v-for='data in dataList' class='product' :style='{background: "url("+ data.imgUrl +") 0% 0% / 100% 100%"}'>
             <div>
               <p class='p2'>{{data.englishName}}</p>
               <p class='p2'>{{data.chineseName}}</p>
               <p class='p2'>{{data.discountText}}</p>
             </div>
         </div>
-      </div>
       <footer>
           <p>400 - 644 - 6698</p>
           <ul>
@@ -31,53 +39,43 @@
 </template>
 
 <script>
-import Nav from '../components/nav'
 
 import axios from 'axios'
 export default {
     data(){
         return {
             dataList:[],
-            current:0,
+            product:{},
             busy:false,
-            imgUrl:"",
-            link:''
+             isShow:false
         }
     },
     methods: {
-    },
-    mounted() {      
-        axios({
-            url:`http://www.mei.com/appapi/home/newZoneEntrance/v3?credential=`
-        }).then(result=>{
-          this.imgUrl = result.data.img;
-          this.link = result.data.linkUrl;
-        })
-      axios({
-          url:`http://www.mei.com/appapi/home/eventForH5?params=%7B%7D&timestamp=1550222398523&summary=7241e2d1f2fd9d04674774bd24a999c3&platform_code=H5`
-      }).then(result=>{
-            this.dataList = result.data.lists;
-            console.log(result.data.lists)
-      })
 
     },
-    components:{
-      Nav
-  }
+    mounted() {      
+      axios({
+          url:`http://www.mei.com/appapi/upcoming/index/v3?platform_code=H5&timestamp=1550223989052&summary=5d2dae0beec93bda62f1c9da9887f9c5`
+      }).then(result=>{
+            this.product = result.data;
+            this.dataList = result.data.lists[0].events;
+            console.log(this.dataList)
+      })
+    }
 }
 </script>
 
 <style scoped lang="scss">
-    img{
-        width: 100%;
-    }
     .Top{
       height:50px;
       font-size: 21px;
       line-height: 50px;
       padding-left: 10px;
       margin-bottom: -10px;
-      margin-top: 15px;
+      margin-top: 30px;
+    }
+    .Top2{
+        padding-left: 10px;
     }
     .product{
         z-index: -1;
@@ -128,5 +126,26 @@ export default {
             }
         }
     }
+.nav{
+  position: fixed;
+  width:100%;
+  top: 0;
+ul{
+  width: 100%;
+  height:40px;
+  white-space: nowrap;
+  overflow-y:hidden;
+  overflow-x:scroll;
+  background: #FFF;
+  li{
+    height:40px;
+    display:inline-table;
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 40px;
+    padding:0 10px;
+  }
+}
+}
 </style>
 

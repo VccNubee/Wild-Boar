@@ -9,7 +9,7 @@ import nanshi from './views/listRouter/nanshi.vue'
 import nvshi from './views/listRouter/nvshi.vue'
 import yingtong from './views/listRouter/yingtong.vue'
 import meizhuang from './views/listRouter/meizhuang.vue'
-
+import jijiangtuichu from './views/jijiangtuichu.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -51,6 +51,10 @@ export default new Router({
           component:meizhuang
         }
       ]
+    },
+    {
+      path:'/jijiangtuichu',
+      component:jijiangtuichu
     },
     {
       path:'/productlist',
