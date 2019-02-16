@@ -3,7 +3,7 @@
     <div class="lop">
     	<div class="divone">
 			<div class="divtwo">
-				<span class="spanf spone"  @click="houtui()">←</span>
+				<span class="spanf spone"  @click="$router.back(-1)">←</span>
 				<span class="spanf sptwo">服饰配饰专场</span>
 				<span class="spanf spthree">···</span>
 			</div>
@@ -78,9 +78,9 @@
 			})
 			
 			},
-			huoutui(){
-				this.$router.go(-1)
-			},
+			// huoutui(){
+			// 	this.$router.go(-1)
+			// },
 			zhekou(){
 				axios({
 					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=1&sort=ASC&timestamp=1550231863111&summary=bff679b42a1670469f372cf0e3af7695&platform_code=H5`
