@@ -4,7 +4,7 @@
     	<div class="divone">
 			<div class="divtwo">
 				<span class="spanf spone"  @click="$router.back(-1)">←</span>
-				<span class="spanf sptwo">服饰配饰专场</span>
+				<span class="spanf sptwo">{{listName}}</span>
 				<span class="spanf spthree">···</span>
 			</div>
 			<div class="divthree">
@@ -20,8 +20,9 @@
 	<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0" class='wai'>
     	<div class="lopChild" v-for="products in looplist" @click="hadnleClick(products)">
     		<img :src="products.imageUrl">
-    		<h3>{{products.brandName}}</h3>
-    		<h3>{{products.productName}}</h3>
+    		<!-- <span>{{products.tagListDto.tag}}</span> -->
+    		<h3 class="hbm">{{products.brandName}}</h3>
+    		<span class="spanpm">{{products.productName}}</span>
     		<p class="tan">
 	    		<span class="sp1">￥{{products.itemPriceDto.price}}</span>
 	    		<span class="sp2">￥{{products.marketPrice}}</span>
@@ -47,7 +48,8 @@
 				busy: false,
 				c:0,
 				isRise:true,
-				myId:null
+				myId:null,
+				listName:''
 			}
 		},
 		created(){
@@ -72,15 +74,14 @@
 				console.log(res.data.products);
 				this.looplist = [...this.looplist,...res.data.products]
 				this.busy = false;
+				this.listName = res.data.eventName;
 			}else{
 				return
 			}
 			})
 			
 			},
-			// huoutui(){
-			// 	this.$router.go(-1)
-			// },
+			
 			zhekou(){
 				axios({
 					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=1&sort=ASC&timestamp=1550231863111&summary=bff679b42a1670469f372cf0e3af7695&platform_code=H5`
@@ -110,16 +111,9 @@
 						this.looplist = res.data.products
 					})
 				}
-					
-
 				
 			}
 
-			
-
-			// handleClick(index){
-			// 	this.$router.push(`/productlist/${index}`)
-			// }
 		}
 
 	}
@@ -143,10 +137,18 @@
 					width: 100%;
 		    	}
 
-		    	h3 {
+		    	.hbm {
 	    		    white-space: nowrap;
 				    text-overflow: ellipsis;
 				    overflow: hidden;
+
+		    	}
+		    	.spanpm {
+		    		display: block;
+					 white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+		    		// font-weight: 100px;
 		    	}
 		    }
 		}
@@ -157,16 +159,16 @@
 
 	    	.sp1{
 		    	color: red;
-				width: 30%;
+				width: 33%;
 		    }
 		    .sp2{
-				width: 30%;
+				width: 34%;
 				color: #ccc;
 				text-decoration:line-through
 		    }
 		    .sp3{
 		    	color: #666;
-		    	width: 30%;
+		    	width: 33%;
 		    }
 	    }
 	    
@@ -189,29 +191,35 @@
 
       	}
       	.sptwo{
-			font-size: 0.575rem;
+			font-size: 16px;
+			width: 200px;
+			text-align: center;
+			white-space: nowrap;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
       	}
       	.spthree{
-			font-weight: 600;
-			font-size: 25px;
+			// font-weight: 600;
+			font-size: 35px;
 			padding-right: 20px;
+			line-height: 50px;
 
       	}
       	
 	}
 	.divthree{
 		height: 30px;
-		display: flex;
-      	flex-direction: row;
-      	flex-wrap: wrap;
+		
       	width:100%;
       	ul{
-      				height: 30px;
-
+      		display: flex;
+      	flex-direction: row;
+      	flex-wrap: wrap;
+      		height: 30px;
       		width: 100%;
       	}
       	.li-class{
-      				height: 30px;
+      		height: 30px;
 			line-height: 30px;
       		list-style: none;
       		width: 25%;
