@@ -1,12 +1,12 @@
 <template>
   <div class="haiwai"  v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0">
-      <router-link tag='div' :to='top.link_url' class='banner' :style='{background: "url("+ top.main_image +")",backgroundSize: "100%"}'>
+      <div class='banner' :style='{background: "url("+ top.main_image +") 0% 0% / 100%",backgroundSize: "100%"}'>
           <div class='ccc'>
             <p class='p3'>{{top.main_title}}</p>
             <p class='p4'>{{top.sub_title}}</p>
             <p class='p4'>{{top.description}}</p>
           </div>
-      </router-link>
+      </div>
       <div v-for='data in dataList' class='product' :style='{background: "url("+ data.imageUrl +")",backgroundSize: "100%"}'>
           <div>
             <p class='p2'>{{data.englishName}}</p>

@@ -9,7 +9,7 @@
       <router-link tag='li' to='/zhonglei/jiaju' activeClass='active'>家具</router-link>
       <router-link tag='li' to='/zhonglei/yingtong' activeClass='active'>婴童</router-link>
       <!-- <router-link v-for='list in dataListTag' tag='li' to='/zhonglei' activeClass='active'>{{list.name}}</router-link> -->
-      <router-link tag='li' to='/tuijian' activeClass='active'>即将上架</router-link>
+      <router-link tag='li' to='/jijiangtuichu' activeClass='active'>即将上架</router-link>
     </ul>
   </div>
 </template>
