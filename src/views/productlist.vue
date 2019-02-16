@@ -8,7 +8,7 @@
 				<span class="spanf spthree">···</span>
 			</div>
 			<div class="divthree">
-				<ul class="">
+				<ul class="aaa">
 					<li class="li-class" @click="renqi()">人气</li>
 					<li class="li-class" @click="zhekou()">折扣</li>
 					<li class="li-class" @click="jiage()">价格</li>
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 
-	<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0">
+	<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0" class='wai'>
     	<div class="lopChild" v-for="products in looplist" @click="hadnleClick(products)">
     		<img :src="products.imageUrl">
     		<h3>{{products.brandName}}</h3>
@@ -133,21 +133,23 @@
 		display: flex;
       	flex-direction: row;
       	flex-wrap: wrap;
-      	margin: 20px;
+		.wai{
+			padding: 10px;
+		    .lopChild{
+	      	margin: 10px 2.5%;
+		    	width: 45%;
+		    	display: inline-block;
+		    	img {
+					width: 100%;
+		    	}
 
-	    .lopChild{
-	    	width: 50%;
-	    	display: inline-block;
-	    	img {
-				width: 100%;
-	    	}
-
-	    	h3 {
-    		    white-space: nowrap;
-			    text-overflow: ellipsis;
-			    overflow: hidden;
-	    	}
-	    }
+		    	h3 {
+	    		    white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+		    	}
+		    }
+		}
 	    .tan{
 	    	display: flex;
 	      	flex-direction: row;
@@ -171,42 +173,56 @@
 	}
 	.divone{
 		width: 100%;
-		height: 1.5rem;
+		height: 80px;
 	}
 	.divtwo{
+		height: 50px;
+		line-height: 50px;
 		display: flex;
       	flex-direction: row;
       	flex-wrap: wrap;
       	justify-content: space-between;
       	.spone{
-			font-size: 20px;
+			font-size: 25px;
+			padding-left: 20px;
+			font-weight: 600;
+
       	}
       	.sptwo{
 			font-size: 0.575rem;
       	}
       	.spthree{
-			font-size: 20px;
+			font-weight: 600;
+			font-size: 25px;
+			padding-right: 20px;
+
       	}
       	
 	}
 	.divthree{
-		margin-top: 10px; 
+		height: 30px;
 		display: flex;
       	flex-direction: row;
       	flex-wrap: wrap;
+      	width:100%;
       	ul{
+      				height: 30px;
+
       		width: 100%;
       	}
       	.li-class{
+      				height: 30px;
+			line-height: 30px;
       		list-style: none;
-      		width: 20%;
+      		width: 25%;
       		float: left;
-      		margin-right: 14px; 
+      		text-align: center;
+      		// margin-right: 14px; 
 
       	}
-      	.li-m{
-      		margin-left: 10px; 
-      	}
+      	// .li-m{
+      	// 	margin-left: 10px; 
+      	// }
       	
 	}
 	
