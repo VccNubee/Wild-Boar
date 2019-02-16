@@ -56,6 +56,7 @@ export default {
   position: fixed;
   width:100%;
   top: 0;
+  z-index: 99;
 ul{
   width: 100%;
   height:40px;

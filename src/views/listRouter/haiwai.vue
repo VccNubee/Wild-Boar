@@ -1,7 +1,7 @@
 <template>
   <div class="haiwai"  v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0">
       <img src="http://www.mei.com/static/img/mktbanner-default.cbf29f0.jpg" alt="">
-      <div v-for='data in dataList' class='product' :style='{background: "url("+ data.imageUrl +")",backgroundSize: "100%"}'>
+      <div v-for='data in dataList' class='product' :style='{background: "url("+ data.imageUrl +")",backgroundSize: "100%"}' @click='toDetail(data.categoryId)'>
           <div>
             <p class='p1'>海外直发</p>
             <p class='p2'>{{data.englishName}}</p>
@@ -53,6 +53,10 @@ export default {
                     return
                 }
             })
+        },
+        toDetail(id){
+            console.log(id)
+            this.$router.push(`/productlist/${id}`)
         }
     },
     mounted() {      
@@ -70,7 +74,6 @@ export default {
         width: 100%;
     }
     .product{
-        z-index: -1;
         height:180px;
         width: 300px;
         margin:0 auto;

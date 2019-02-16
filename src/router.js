@@ -57,7 +57,7 @@ export default new Router({
       component:jijiangtuichu
     },
     {
-      path:'/productlist',
+      path:'/productlist/:categoryId',
       name:'productlist',
       component:Productlist
     },
