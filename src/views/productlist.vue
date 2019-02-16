@@ -17,7 +17,7 @@
 			</div>
 		</div>
 
-	<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0" class='wai'>
+	<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="200" class='wai'>
     	<div class="lopChild" v-for="products in looplist" @click="hadnleClick(products)">
     		<img :src="products.imageUrl">
     		<!-- <span>{{products.tagListDto.tag}}</span> -->
@@ -181,9 +181,11 @@
 	    }
 	    
 	}
+
 	.divone{
 		width: 100%;
 		height: 80px;
+		// position: fixed;
 	}
 	.divtwo{
 		height: 50px;
@@ -233,13 +235,13 @@
       		width: 25%;
       		float: left;
       		text-align: center;
+      		color: #999;
       		// margin-right: 14px; 
-
+			
       	}
-      	// .li-m{
-      	// 	margin-left: 10px; 
-      	// }
       	
+		li:hover {color: #000}	
+		li:focus {color: #000}
 	}
 	
 </style>
