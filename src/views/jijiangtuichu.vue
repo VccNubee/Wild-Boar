@@ -1,7 +1,7 @@
 <template>
   <div class="haiwai">
    <div class='nav'>
-    <ul>
+    <ul :class="isShow?'show':'not'">
       <router-link tag='li' to='/tuijian' activeClass='active'>推荐</router-link>
       <router-link tag='li' to='/zhonglei/haiwai' activeClass='active'>海外</router-link>
       <router-link tag='li' to='/zhonglei/nvshi' activeClass='active'>女士</router-link>
@@ -126,6 +126,43 @@ export default {
             }
         }
     }
+    .show{
+  .active{
+    position: relative;
+  }
+  .active::after{
+    content:'';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform:translate(-50%,0);
+    width: 20px;
+    height: 1px;
+    border: 1px solid #000;
+    background:#000;
+    border-radius: 1.5px;
+  }
+  background: #fff;
+}
+.not{
+  color:#000;
+  .active{
+    position: relative;
+  }
+  .active::after{
+    content:'';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform:translate(-50%,0);
+    width: 40px;
+    height: 1px;
+    border: 1px solid #000;
+    background:#000;
+    border-radius: 1.5px;
+  }
+
+}
 .nav{
   position: fixed;
   width:100%;
