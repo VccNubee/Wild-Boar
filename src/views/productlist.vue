@@ -9,7 +9,7 @@
 			</div>
 			<div class="divthree">
 				<ul class="aaa">
-					<li class="li-class" @click="renqi()">人气</li>
+					<li class="li-class peiqi" @click="renqi()">人气</li>
 					<li class="li-class" @click="zhekou()">折扣</li>
 					<li class="li-class" @click="jiage()">价格</li>
 					<li class="li-class" @click="shaixuan()">筛选</li>
@@ -239,9 +239,17 @@
       		// margin-right: 14px; 
 			
       	}
+      	// .peiqi {
+      	// 	color: #111;
+      	// }
       	
-		li:hover {color: #000}	
-		li:focus {color: #000}
+		li:hover {
+			color: #000;
+		}	
+
+
+
+		
 	}
 	
 </style>
