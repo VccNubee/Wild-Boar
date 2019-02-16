@@ -47,16 +47,23 @@ export default {
 </script>
 <style scoped lang='scss'> 
 .show{
+.active{
+  border-bottom: 2px solid #000;
+}
   background: #fff;
 }
 .not{
   color:#fff;
+  .active{
+  border-bottom:2px solid #FFF;
+}
+
 }
 .nav{
   position: fixed;
   width:100%;
   top: 0;
-  z-index: 99;
+  z-index: 98;
 ul{
   width: 100%;
   height:40px;
