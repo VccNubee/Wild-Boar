@@ -9,10 +9,10 @@
 			</div>
 			<div class="divthree">
 				<ul class="">
-					<li class="li-class">人气</li>
-					<li class="li-class" @click="renqi()">折扣</li>
-					<li class="li-class">价格</li>
-					<li class="li-class">筛选</li>
+					<li class="li-class" @click="renqi()">人气</li>
+					<li class="li-class" @click="zhekou()">折扣</li>
+					<li class="li-class" @click="jiage()">价格</li>
+					<li class="li-class" @click="shaixuan()">筛选</li>
 				</ul>
 			</div>
 		</div>
@@ -45,7 +45,9 @@
 			return {
 				looplist:[],
 				busy: false,
-				c:0
+				c:0,
+				isRise:true,
+				myId:null
 			}
 		},
 		created(){
@@ -55,7 +57,7 @@
 
 		mounted(){
 			console.log(this.$route.params.myid)
-			
+			this.myId = this.$route.params.categoryId
 		},
 		methods:{
 			loadMore(){
@@ -63,7 +65,7 @@
 				this.busy=true;
 				console.log(233)
 				axios({
-				url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=2121005100000001991&key=&sort=&timestamp=1550125192415&summary=43259576322a75c7a16d0e7edb6d9b4d&platform_code=H5`
+				url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=&sort=&timestamp=1550125192415&summary=43259576322a75c7a16d0e7edb6d9b4d&platform_code=H5`
 
 			}).then(res=>{
 				if(res.data.products.length){
@@ -79,13 +81,40 @@
 			huoutui(){
 				this.$router.go(-1)
 			},
-			renqi(){
+			zhekou(){
 				axios({
-					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=2121005100000001991&key=1&sort=ASC&timestamp=1550231863111&summary=bff679b42a1670469f372cf0e3af7695&platform_code=H5`
+					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=1&sort=ASC&timestamp=1550231863111&summary=bff679b42a1670469f372cf0e3af7695&platform_code=H5`
 				}).then(res=>{
 					this.looplist = res.data.products
 				})
+			},
+			renqi(){
+				axios({
+					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=&sort=&timestamp=1550125192415&summary=43259576322a75c7a16d0e7edb6d9b4d&platform_code=H5`
+				}).then(res=>{
+					this.looplist = res.data.products
+				})
+			},
+			jiage(){
+				this.isRise = !this.isRise
+				if(this.isRise == true) {
+					axios({
+					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=&sort=ASC&timestamp=1550285124667&summary=debe425cf0238be6ba5df11d90125831&platform_code=H5`
+					}).then(res=>{
+						this.looplist = res.data.products
+					})
+				} else {
+					axios({
+					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=&sort=DESC&timestamp=1550285093091&summary=57247a554b959e90eee81e5d876951b0&platform_code=H5`
+					}).then(res=>{
+						this.looplist = res.data.products
+					})
+				}
+					
+
+				
 			}
+
 			
 
 			// handleClick(index){
@@ -114,7 +143,6 @@
 	    	}
 
 	    	h3 {
-	    		// display: block;
     		    white-space: nowrap;
 			    text-overflow: ellipsis;
 			    overflow: hidden;
