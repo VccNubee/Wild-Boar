@@ -6,7 +6,7 @@
       
       <div class='newToday' v-for='list in dataList'>
         <p class='Top'>{{list.name}}</p>
-        <div v-for='data in list.events' class='product' :style='{background: "url("+ data.imageUrl +") 0% 0% / 100% 100%"}'>
+        <div v-for='data in list.events' class='product' :style='{background: "url("+ data.imageUrl +") 0% 0% / 100% 100%"}' @click='toDetail(data.categoryId)'>
             <div>
               <p class='p2'>{{data.englishName}}</p>
               <p class='p2'>{{data.chineseName}}</p>
@@ -45,6 +45,10 @@ export default {
         }
     },
     methods: {
+        toDetail(id){
+            console.log(id)
+            this.$router.push(`/productlist/${id}`)
+        }
     },
     mounted() {      
         axios({
@@ -80,7 +84,6 @@ export default {
       margin-top: 15px;
     }
     .product{
-        z-index: -1;
         height:180px;
         width: 300px;
         margin:0 auto;
