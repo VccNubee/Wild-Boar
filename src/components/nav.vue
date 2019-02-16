@@ -29,14 +29,14 @@ export default {
     // }).then(result=>{
     //   this.dataListTag = result.data.lists
     // })
-    window.onscroll = this.fix
+    window.onscroll = this.fix;
   },
     beforeDestroy() {
       window.onscroll = null;
     },
   methods: {
     fix(){
-      if(document.documentElement.scrollTop || document.body.scrollTop ==0){
+      if((document.documentElement.scrollTop || document.body.scrollTop) ==0){
         this.isShow = false;
       }else{
         this.isShow = true
@@ -47,16 +47,40 @@ export default {
 </script>
 <style scoped lang='scss'> 
 .show{
-.active{
-  border-bottom: 2px solid #000;
-}
+  .active{
+    position: relative;
+  }
+  .active::after{
+    content:'';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform:translate(-50%,0);
+    width: 20px;
+    height: 1px;
+    border: 1px solid #000;
+    background:#000;
+    border-radius: 1.5px;
+  }
   background: #fff;
 }
 .not{
   color:#fff;
   .active{
-  border-bottom:2px solid #FFF;
-}
+    position: relative;
+  }
+  .active::after{
+    content:'';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform:translate(-50%,0);
+    width: 20px;
+    height: 1px;
+    border: 1px solid #fff;
+    background:#fff;
+    border-radius: 1.5px;
+  }
 
 }
 .nav{
