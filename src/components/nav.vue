@@ -36,7 +36,7 @@ export default {
     },
   methods: {
     fix(){
-      if(document.documentElement.scrollTop==0){
+      if(document.documentElement.scrollTop || document.body.scrollTop ==0){
         this.isShow = false;
       }else{
         this.isShow = true

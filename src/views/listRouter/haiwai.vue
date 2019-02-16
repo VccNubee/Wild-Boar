@@ -1,5 +1,5 @@
 <template>
-  <div class="haiwai"  v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0">
+  <div class="haiwai"  v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="200">
       <img src="http://www.mei.com/static/img/mktbanner-default.cbf29f0.jpg" alt="">
       <div v-for='data in dataList' class='product' :style='{background: "url("+ data.imageUrl +")",backgroundSize: "100%"}' @click='toDetail(data.categoryId)'>
           <div>

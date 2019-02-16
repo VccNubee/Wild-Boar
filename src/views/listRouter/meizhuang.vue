@@ -1,5 +1,5 @@
 <template>
-  <div class="haiwai"  v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0">
+  <div class="haiwai"  v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="200">
       <div class='banner' :style='{background: "url("+ top.main_image +") 0% 0% / 100%",backgroundSize: "100%"}'>
           <div class='ccc'>
             <p class='p3'>{{top.main_title}}</p>
