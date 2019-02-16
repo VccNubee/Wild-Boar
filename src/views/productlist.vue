@@ -83,20 +83,25 @@
 			},
 			
 			zhekou(){
+				this.c=1;
 				axios({
 					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=1&sort=ASC&timestamp=1550231863111&summary=bff679b42a1670469f372cf0e3af7695&platform_code=H5`
 				}).then(res=>{
 					this.looplist = res.data.products
 				})
+				this.busy = false;
 			},
 			renqi(){
+				this.c=1;
 				axios({
 					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=&sort=&timestamp=1550125192415&summary=43259576322a75c7a16d0e7edb6d9b4d&platform_code=H5`
 				}).then(res=>{
 					this.looplist = res.data.products
 				})
+				this.busy = false;
 			},
 			jiage(){
+				this.c=1;
 				this.isRise = !this.isRise
 				if(this.isRise == true) {
 					axios({
@@ -104,12 +109,15 @@
 					}).then(res=>{
 						this.looplist = res.data.products
 					})
+					this.busy = false;
 				} else {
+					this.c=1;
 					axios({
 					url:`http://www.mei.com/appapi/event/product/v3?pageIndex=${this.c}&categoryId=${this.myId}&key=&sort=DESC&timestamp=1550285093091&summary=57247a554b959e90eee81e5d876951b0&platform_code=H5`
 					}).then(res=>{
 						this.looplist = res.data.products
 					})
+					this.busy = false;
 				}
 				
 			}
